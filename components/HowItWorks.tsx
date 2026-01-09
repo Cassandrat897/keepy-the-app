@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const TimelineItem = ({ title, description, color, emoji, index }: any) => {
+const TimelineItem = ({ title, description, color, emoji, index, isMobile }: any) => {
   const isEven = index % 2 === 0;
 
   return (
@@ -13,10 +13,12 @@ const TimelineItem = ({ title, description, color, emoji, index }: any) => {
       {/* The Node (Bubble) */}
       <div className="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 flex flex-col items-center justify-center z-20 top-0">
         <motion.div
-           initial={{ scale: 0 }}
-           whileInView={{ scale: 1 }}
-           viewport={{ once: true, amount: 0.2 }}
-           transition={{ type: "spring", stiffness: 200, damping: 15 }}
+           {...(isMobile ? {} : {
+             initial: { scale: 0 },
+             whileInView: { scale: 1 },
+             viewport: { once: true, amount: 0.2 },
+             transition: { type: "spring", stiffness: 200, damping: 15 }
+           })}
            className={`w-14 h-14 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center shadow-[0_0_0_8px_rgba(255,255,255,1)] md:shadow-[0_0_0_16px_rgba(255,255,255,1)] relative overflow-hidden`}
         >
              <div className={`absolute inset-0 ${color}`}></div>
@@ -26,10 +28,12 @@ const TimelineItem = ({ title, description, color, emoji, index }: any) => {
 
       {/* Content */}
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
+        {...(isMobile ? {} : {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, amount: 0.2 },
+            transition: { duration: 0.6, delay: 0.1 }
+        })}
         className={`w-full md:w-5/12 pl-28 md:pl-0 pr-4 ${isEven ? 'md:text-right md:pr-24 md:pl-0' : 'md:text-left md:pl-24 md:pr-0'}`}
       >
          
@@ -48,6 +52,8 @@ const TimelineItem = ({ title, description, color, emoji, index }: any) => {
 };
 
 export const HowItWorks: React.FC = () => {
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+
   const steps = [
     { 
         emoji: '🌸', 
@@ -102,9 +108,11 @@ export const HowItWorks: React.FC = () => {
 
       <div className="container mx-auto px-6">
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            {...(isMobile ? {} : {
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true }
+            })}
             className="text-center mb-10 md:mb-16"
         >
             <h2 className="text-4xl md:text-5xl font-serif text-keepy-navy">
@@ -129,7 +137,7 @@ export const HowItWorks: React.FC = () => {
 
             <div className="flex flex-col gap-0 md:gap-0 pb-8">
                 {steps.map((step, index) => (
-                    <TimelineItem key={index} {...step} index={index} />
+                    <TimelineItem key={index} {...step} index={index} isMobile={isMobile} />
                 ))}
             </div>
 

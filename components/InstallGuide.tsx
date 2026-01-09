@@ -5,6 +5,7 @@ import { Logo } from './Logo';
 
 export const InstallGuide: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'ios' | 'android'>('ios');
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
   return (
     <section id="install" className="py-16 relative z-10">
@@ -50,10 +51,12 @@ export const InstallGuide: React.FC = () => {
                 <AnimatePresence mode="wait">
                 <motion.div
                     key={activeTab}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4 }}
+                    // Simple fade for tab switch is fine, but avoid complex y-movement on mobile if desired, though tabs usually need feedback.
+                    // keeping simple fade.
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
                     className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
                 >
                     <div className="space-y-6">
@@ -101,10 +104,13 @@ export const InstallGuide: React.FC = () => {
                                 </div>
                                 {/* Footer / Action Sheet */}
                                 <motion.div 
-                                    initial={{ y: "100%" }}
-                                    animate={{ y: "0%" }}
-                                    transition={{ delay: 0.5, type: "spring" }}
-                                    className="absolute bottom-0 left-0 right-0 bg-gray-100/90 backdrop-blur-md p-4 rounded-t-2xl border-t border-gray-200/50"
+                                    {...(isMobile ? {} : {
+                                        initial: { y: "100%" },
+                                        animate: { y: "0%" },
+                                        transition: { delay: 0.5, type: "spring" }
+                                    })}
+                                    // Make sure it's visible on mobile if animation is disabled
+                                    className={`absolute bottom-0 left-0 right-0 bg-gray-100/90 backdrop-blur-md p-4 rounded-t-2xl border-t border-gray-200/50 ${isMobile ? '' : ''}`}
                                 >
                                     <div className="flex items-center gap-3 mb-3">
                                         <div className="w-8 h-8 bg-white rounded-lg shadow-sm flex items-center justify-center">

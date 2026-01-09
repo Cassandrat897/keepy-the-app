@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Bubble = ({ color, sizeClass, top, left, delay, duration, className }: any) => {
+const Bubble = ({ color, sizeClass, top, left, delay, duration, className, isMobile }: any) => {
   return (
     <motion.div
       className={`absolute rounded-full opacity-30 blur-3xl mix-blend-multiply ${color} ${sizeClass} ${className}`}
@@ -9,12 +9,13 @@ const Bubble = ({ color, sizeClass, top, left, delay, duration, className }: any
         top: top,
         left: left,
       }}
-      animate={{
+      // On mobile, do not animate to save battery and performance
+      animate={isMobile ? {} : {
         y: [0, -40, 0],
         x: [0, 20, 0],
         scale: [1, 1.1, 1],
       }}
-      transition={{
+      transition={isMobile ? {} : {
         duration: duration,
         repeat: Infinity,
         ease: "easeInOut",
@@ -28,6 +29,8 @@ export const Bubbles: React.FC = () => {
   // Bubbles configuration - pushed to edges/corners to keep center clear for text
   // Using Tailwind classes for responsive sizing
   // Added 'hidden md:block' to some bubbles to improve mobile performance
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+
   const bubbles = [
     { color: 'bg-keepy-lime', sizeClass: 'w-64 h-64 md:w-[25rem] md:h-[25rem]', top: '-5%', left: '-10%', delay: 0, duration: 20, className: '' },
     { color: 'bg-keepy-pink', sizeClass: 'w-48 h-48 md:w-[20rem] md:h-[20rem]', top: '5%', left: '80%', delay: 2, duration: 22, className: 'hidden md:block' },
@@ -40,7 +43,7 @@ export const Bubbles: React.FC = () => {
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
       {bubbles.map((b, index) => (
-        <Bubble key={index} {...b} />
+        <Bubble key={index} {...b} isMobile={isMobile} />
       ))}
     </div>
   );

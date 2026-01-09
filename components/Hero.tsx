@@ -75,6 +75,9 @@ const floatingEmojis = [
 ];
 
 export const Hero: React.FC = () => {
+  // Simple check for mobile to disable animations
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+
   return (
     <section 
       className="min-h-[60vh] md:min-h-[70vh] flex items-center justify-center pt-28 pb-12 relative overflow-hidden bg-white"
@@ -91,8 +94,9 @@ export const Hero: React.FC = () => {
           <motion.div 
             key={i}
             className={`absolute cursor-pointer pointer-events-auto filter drop-shadow-sm ${item.className}`}
-            animate={item.animate}
-            transition={item.transition}
+            // On mobile: no animation, just static position
+            animate={isMobile ? {} : item.animate}
+            transition={isMobile ? {} : item.transition}
             whileHover={{ 
               scale: 1.3,
               opacity: 1,
@@ -112,9 +116,12 @@ export const Hero: React.FC = () => {
         
         <div className="flex flex-col items-center text-center">
             <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
+            // Mobile: Instant visibility
+            {...(isMobile ? {} : {
+                initial: { opacity: 0, scale: 0.8 },
+                animate: { opacity: 1, scale: 1 },
+                transition: { duration: 0.6 }
+            })}
             className="mb-6 flex items-center gap-2 text-keepy-navy/80 font-bold tracking-wide uppercase text-[10px] md:text-sm bg-white/60 px-4 py-1.5 rounded-full backdrop-blur-md border border-white/50 shadow-sm"
             >
             <Star size={12} fill="currentColor" className="text-keepy-orange" />
@@ -123,9 +130,12 @@ export const Hero: React.FC = () => {
             </motion.div>
 
             <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            // Mobile: Instant visibility
+            {...(isMobile ? {} : {
+                initial: { opacity: 0, y: 30 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.8, delay: 0.2 }
+            })}
             className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-keepy-navy tracking-tight mb-6 leading-[0.95] drop-shadow-sm"
             >
             Save it. <br/>
@@ -139,18 +149,24 @@ export const Hero: React.FC = () => {
             </motion.h1>
 
             <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            // Mobile: Instant visibility
+            {...(isMobile ? {} : {
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.8, delay: 0.4 }
+            })}
             className="text-base md:text-lg text-keepy-navy/90 max-w-lg mx-auto mb-8 font-sans font-light leading-relaxed"
             >
             No more lost links. No more messy screenshots. Just everything you love, kept in one cute place.
             </motion.p>
 
             <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            // Mobile: Instant visibility
+            {...(isMobile ? {} : {
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.8, delay: 0.6 }
+            })}
             className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full px-4 md:px-0"
             >
             <a

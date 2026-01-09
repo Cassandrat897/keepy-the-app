@@ -2,23 +2,29 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export const Story: React.FC = () => {
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+
   return (
     <section id="story" className="py-16 relative z-10">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
+              {...(isMobile ? {} : {
+                initial: { opacity: 0 },
+                whileInView: { opacity: 1 },
+                viewport: { once: true, amount: 0.2 }
+              })}
               className="text-center mb-10"
             >
                 <span className="font-serif italic text-4xl md:text-5xl text-keepy-navy">The Story Behind Keepy ✨</span>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
+              {...(isMobile ? {} : {
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true, amount: 0.1 }
+              })}
               className="bg-white p-8 md:p-12 rounded-[2rem] shadow-sm border border-gray-100 relative overflow-hidden"
             >
                 {/* Decorative background vibe */}
