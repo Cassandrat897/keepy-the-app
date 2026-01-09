@@ -1,13 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Bubble = ({ color, size, top, left, delay, duration }: any) => {
+const Bubble = ({ color, sizeClass, top, left, delay, duration, className }: any) => {
   return (
     <motion.div
-      className={`absolute rounded-full opacity-30 blur-3xl mix-blend-multiply ${color}`}
+      className={`absolute rounded-full opacity-30 blur-3xl mix-blend-multiply ${color} ${sizeClass} ${className}`}
       style={{
-        width: size,
-        height: size,
         top: top,
         left: left,
       }}
@@ -28,14 +26,15 @@ const Bubble = ({ color, size, top, left, delay, duration }: any) => {
 
 export const Bubbles: React.FC = () => {
   // Bubbles configuration - pushed to edges/corners to keep center clear for text
+  // Using Tailwind classes for responsive sizing
+  // Added 'hidden md:block' to some bubbles to improve mobile performance
   const bubbles = [
-    { color: 'bg-keepy-lime', size: '25rem', top: '-10%', left: '-10%', delay: 0, duration: 20 },
-    { color: 'bg-keepy-pink', size: '20rem', top: '5%', left: '90%', delay: 2, duration: 22 },
-    { color: 'bg-keepy-cyan', size: '30rem', top: '40%', left: '-15%', delay: 4, duration: 25 },
-    { color: 'bg-keepy-yellow', size: '25rem', top: '50%', left: '90%', delay: 1, duration: 21 },
-    { color: 'bg-keepy-orange', size: '20rem', top: '90%', left: '-5%', delay: 3, duration: 19 },
-    // Removed the center bubble
-    { color: 'bg-keepy-lime', size: '18rem', top: '85%', left: '80%', delay: 0, duration: 18 },
+    { color: 'bg-keepy-lime', sizeClass: 'w-64 h-64 md:w-[25rem] md:h-[25rem]', top: '-5%', left: '-10%', delay: 0, duration: 20, className: '' },
+    { color: 'bg-keepy-pink', sizeClass: 'w-48 h-48 md:w-[20rem] md:h-[20rem]', top: '5%', left: '80%', delay: 2, duration: 22, className: 'hidden md:block' },
+    { color: 'bg-keepy-cyan', sizeClass: 'w-72 h-72 md:w-[30rem] md:h-[30rem]', top: '40%', left: '-20%', delay: 4, duration: 25, className: 'hidden md:block' },
+    { color: 'bg-keepy-yellow', sizeClass: 'w-56 h-56 md:w-[25rem] md:h-[25rem]', top: '50%', left: '80%', delay: 1, duration: 21, className: '' },
+    { color: 'bg-keepy-orange', sizeClass: 'w-40 h-40 md:w-[20rem] md:h-[20rem]', top: '85%', left: '-10%', delay: 3, duration: 19, className: 'hidden md:block' },
+    { color: 'bg-keepy-lime', sizeClass: 'w-32 h-32 md:w-[18rem] md:h-[18rem]', top: '80%', left: '70%', delay: 0, duration: 18, className: '' },
   ];
 
   return (

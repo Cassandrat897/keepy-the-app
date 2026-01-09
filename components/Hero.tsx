@@ -32,43 +32,43 @@ const playPopSound = () => {
 const floatingEmojis = [
   {
       emoji: "🫧",
-      className: "top-[5%] left-[5%] md:top-[15%] md:left-[10%] text-5xl md:text-7xl opacity-90",
+      className: "top-[2%] left-[2%] md:top-[15%] md:left-[10%] text-4xl md:text-7xl opacity-90",
       animate: { y: [0, -40, 0], x: [0, 15, 0], scale: [1, 1.1, 1] },
       transition: { duration: 8, repeat: Infinity, ease: "easeInOut" }
   },
   {
       emoji: "🫧",
-      className: "top-[10%] right-[5%] md:top-[25%] md:right-[15%] text-6xl md:text-9xl opacity-80",
+      className: "top-[5%] right-[2%] md:top-[25%] md:right-[15%] text-5xl md:text-9xl opacity-80",
       animate: { y: [0, 50, 0], rotate: [0, 10, 0] },
       transition: { duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }
   },
   {
       emoji: "✨",
-      className: "hidden md:block top-[18%] right-[25%] text-5xl opacity-80", // Hidden on mobile to clear text
+      className: "hidden md:block top-[18%] right-[25%] text-5xl opacity-80", 
       animate: { scale: [1, 1.4, 1], opacity: [0.6, 1, 0.6], rotate: [0, 180, 0] },
       transition: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
   },
   {
       emoji: "🫧",
-      className: "bottom-[5%] left-[5%] md:bottom-[35%] md:left-[5%] text-6xl md:text-8xl opacity-70",
+      className: "bottom-[5%] left-[2%] md:bottom-[35%] md:left-[5%] text-5xl md:text-8xl opacity-70",
       animate: { x: [0, 30, 0], rotate: [0, -10, 0] },
       transition: { duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }
   },
   {
       emoji: "✨",
-      className: "bottom-[15%] left-[10%] md:bottom-[40%] md:left-[20%] text-3xl md:text-4xl opacity-60",
+      className: "bottom-[12%] left-[10%] md:bottom-[40%] md:left-[20%] text-2xl md:text-4xl opacity-60",
       animate: { scale: [1, 1.2, 1], opacity: [0.4, 0.8, 0.4] },
       transition: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 3 }
   },
   {
       emoji: "🫧",
-      className: "top-[60%] right-[5%] md:top-[50%] md:right-[5%] text-4xl md:text-6xl opacity-80",
+      className: "top-[65%] right-[2%] md:top-[50%] md:right-[5%] text-3xl md:text-6xl opacity-80",
       animate: { scale: [1, 1.3, 1], opacity: [0.5, 0.8, 0.5] },
       transition: { duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.5 }
   },
   {
       emoji: "🫧",
-      className: "hidden md:block bottom-[15%] right-[30%] text-5xl opacity-60", // Hidden on mobile
+      className: "hidden md:block bottom-[15%] right-[30%] text-5xl opacity-60",
       animate: { y: [0, -20, 0], x: [0, -10, 0] },
       transition: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
   }
@@ -77,13 +77,13 @@ const floatingEmojis = [
 export const Hero: React.FC = () => {
   return (
     <section 
-      className="min-h-[60vh] flex items-center justify-center pt-24 pb-8 relative overflow-hidden bg-white"
+      className="min-h-[60vh] md:min-h-[70vh] flex items-center justify-center pt-28 pb-12 relative overflow-hidden bg-white"
     >
       
-      {/* Aesthetic Gradient Background */}
+      {/* Aesthetic Gradient Background - Simplified for mobile */}
       <div className="absolute inset-0 bg-gradient-to-br from-keepy-lime/20 via-white to-keepy-cyan/20 opacity-80"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-keepy-pink/10 via-transparent to-transparent"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-keepy-yellow/10 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-keepy-pink/10 via-transparent to-transparent hidden md:block"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-keepy-yellow/10 via-transparent to-transparent hidden md:block"></div>
       
       {/* Floating Emojis Layer */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
@@ -100,6 +100,7 @@ export const Hero: React.FC = () => {
               transition: { duration: 0.2 }
             }}
             whileTap={{ scale: 0.9 }}
+            onTap={() => playPopSound()}
             onHoverStart={() => playPopSound()}
           >
             {item.emoji}
@@ -114,7 +115,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 flex items-center gap-2 text-keepy-navy/80 font-bold tracking-wide uppercase text-xs md:text-sm bg-white/60 px-4 py-1.5 rounded-full backdrop-blur-md border border-white/50 shadow-sm"
+            className="mb-6 flex items-center gap-2 text-keepy-navy/80 font-bold tracking-wide uppercase text-[10px] md:text-sm bg-white/60 px-4 py-1.5 rounded-full backdrop-blur-md border border-white/50 shadow-sm"
             >
             <Star size={12} fill="currentColor" className="text-keepy-orange" />
             <span>The aesthetic way to organize</span>
@@ -125,7 +126,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-keepy-navy tracking-tight mb-6 leading-[0.9] drop-shadow-sm"
+            className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-keepy-navy tracking-tight mb-6 leading-[0.95] drop-shadow-sm"
             >
             Save it. <br/>
             Sort it. <br/>
@@ -150,13 +151,13 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full px-4 md:px-0"
             >
             <a
                 href="https://keepy-app.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-8 py-4 bg-keepy-navy text-white text-lg rounded-full font-serif italic hover:bg-keepy-pink hover:text-keepy-navy transition-all duration-500 flex items-center gap-3 shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                className="group w-full md:w-auto justify-center px-8 py-4 bg-keepy-navy text-white text-lg rounded-full font-serif italic hover:bg-keepy-pink hover:text-keepy-navy transition-all duration-500 flex items-center gap-3 shadow-xl hover:shadow-2xl hover:-translate-y-1"
             >
                 Open Keepy <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>

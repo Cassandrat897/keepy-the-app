@@ -15,7 +15,7 @@ const TimelineItem = ({ title, description, color, emoji, index }: any) => {
         <motion.div
            initial={{ scale: 0 }}
            whileInView={{ scale: 1 }}
-           viewport={{ once: true, margin: "-50px" }}
+           viewport={{ once: true, amount: 0.2 }}
            transition={{ type: "spring", stiffness: 200, damping: 15 }}
            className={`w-14 h-14 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center shadow-[0_0_0_8px_rgba(255,255,255,1)] md:shadow-[0_0_0_16px_rgba(255,255,255,1)] relative overflow-hidden`}
         >
@@ -28,7 +28,7 @@ const TimelineItem = ({ title, description, color, emoji, index }: any) => {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         className={`w-full md:w-5/12 pl-28 md:pl-0 pr-4 ${isEven ? 'md:text-right md:pr-24 md:pl-0' : 'md:text-left md:pl-24 md:pr-0'}`}
       >
@@ -97,8 +97,8 @@ export const HowItWorks: React.FC = () => {
     <section id="features" className="pt-4 pb-12 md:pb-16 relative z-10 bg-white overflow-hidden">
       
       {/* Background Blobs */}
-      <div className="absolute top-[20%] right-0 w-[30rem] h-[30rem] bg-keepy-lime/5 rounded-full blur-3xl -z-10 mix-blend-multiply pointer-events-none"></div>
-      <div className="absolute bottom-[20%] left-0 w-[30rem] h-[30rem] bg-keepy-pink/5 rounded-full blur-3xl -z-10 mix-blend-multiply pointer-events-none"></div>
+      <div className="absolute top-[20%] right-0 w-[20rem] h-[20rem] md:w-[30rem] md:h-[30rem] bg-keepy-lime/5 rounded-full blur-3xl -z-10 mix-blend-multiply pointer-events-none"></div>
+      <div className="absolute bottom-[20%] left-0 w-[20rem] h-[20rem] md:w-[30rem] md:h-[30rem] bg-keepy-pink/5 rounded-full blur-3xl -z-10 mix-blend-multiply pointer-events-none"></div>
 
       <div className="container mx-auto px-6">
         <motion.div
@@ -119,8 +119,9 @@ export const HowItWorks: React.FC = () => {
 
         <div className="relative max-w-4xl mx-auto">
             {/* The ZigZag Road Line */}
+            {/* Adjusted Left Position to align with center of bubble (left-6 is 24px, width is 56px, center is 52px) */}
             <div 
-                className="absolute left-[56px] md:left-1/2 top-0 bottom-0 w-8 -ml-4 transform z-0 opacity-30 bg-repeat-y bg-center"
+                className="absolute left-[52px] md:left-1/2 top-0 bottom-0 w-8 -ml-4 transform z-0 opacity-30 bg-repeat-y bg-center"
                 style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg width='24' height='48' viewBox='0 0 24 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 0 L 22 12 L 12 24 L 2 36 L 12 48' stroke='%2309253c' stroke-width='2' fill='none' stroke-dasharray='4 6' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E")`
                 }}
@@ -133,7 +134,7 @@ export const HowItWorks: React.FC = () => {
             </div>
 
              {/* End Node */}
-             <div className="absolute bottom-0 left-[56px] md:left-1/2 transform -translate-x-1/2 translate-y-1/2">
+             <div className="absolute bottom-0 left-[52px] md:left-1/2 transform -translate-x-1/2 translate-y-1/2">
                 <div className="w-4 h-4 rounded-full bg-keepy-navy/20"></div>
              </div>
         </div>

@@ -9,7 +9,7 @@ export const Story: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               className="text-center mb-10"
             >
                 <span className="font-serif italic text-4xl md:text-5xl text-keepy-navy">The Story Behind Keepy ✨</span>
@@ -18,7 +18,7 @@ export const Story: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               className="bg-white p-8 md:p-12 rounded-[2rem] shadow-sm border border-gray-100 relative overflow-hidden"
             >
                 {/* Decorative background vibe */}

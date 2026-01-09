@@ -6,7 +6,6 @@ import { InstallGuide } from './components/InstallGuide';
 import { Story } from './components/Story';
 import { Footer } from './components/Footer';
 import { Bubbles } from './components/Bubbles';
-import { ScrollProgress } from './components/ScrollProgress';
 
 const App: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,7 +17,6 @@ const App: React.FC = () => {
   return (
     <div className={`relative min-h-screen bg-[#fafafa] transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <div className="grain"></div>
-      <ScrollProgress />
       <Bubbles />
       
       <div className="relative z-10">
