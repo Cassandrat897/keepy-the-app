@@ -170,7 +170,7 @@ export const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full px-4 md:px-0"
             >
             <a
-                href="https://keepy-app.vercel.app"
+                href="https://tally.so/r/QKeG2G"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group w-full md:w-auto justify-center px-8 py-4 bg-keepy-navy text-white text-lg rounded-full font-serif italic hover:bg-keepy-pink hover:text-keepy-navy transition-all duration-500 flex items-center gap-3 shadow-xl hover:shadow-2xl hover:-translate-y-1"

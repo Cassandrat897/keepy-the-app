@@ -10,9 +10,17 @@ export const InstallGuide: React.FC = () => {
   return (
     <section id="install" className="py-16 relative z-10">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-10">
+        <div className="text-center mb-10 flex flex-col items-center">
           <h2 className="text-3xl md:text-5xl font-serif italic text-keepy-navy mb-4">Make it yours</h2>
-          <p className="text-lg text-gray-500 font-light">Add Keepy to your home screen.</p>
+          <p className="text-lg text-gray-500 font-light mb-6">Add Keepy to your home screen.</p>
+          <a
+            href="https://tally.so/r/QKeG2G"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2.5 bg-keepy-navy text-white rounded-full font-serif italic hover:bg-keepy-orange hover:text-keepy-navy transition-all duration-300 shadow-md hover:shadow-lg text-base md:text-lg inline-flex items-center gap-2"
+          >
+            Request Access Code
+          </a>
         </div>
 
         <div className="max-w-5xl mx-auto">

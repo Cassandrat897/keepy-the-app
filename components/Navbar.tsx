@@ -59,7 +59,7 @@ export const Navbar: React.FC = () => {
               </a>
             ))}
             <a
-              href="https://keepy-app.vercel.app"
+              href="https://tally.so/r/QKeG2G"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2.5 bg-keepy-navy text-white rounded-full font-serif italic hover:bg-keepy-orange hover:text-keepy-navy transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2"
@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
                 </a>
               ))}
               <a
-                href="https://keepy-app.vercel.app"
+                href="https://tally.so/r/QKeG2G"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
