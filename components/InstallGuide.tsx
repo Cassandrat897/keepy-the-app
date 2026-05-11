@@ -14,12 +14,12 @@ export const InstallGuide: React.FC = () => {
           <h2 className="text-3xl md:text-5xl font-serif italic text-keepy-navy mb-4">Make it yours</h2>
           <p className="text-lg text-gray-500 font-light mb-6">Add Keepy to your home screen.</p>
           <a
-            href="https://tally.so/r/QKeG2G"
+            href="https://keepy-app.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2.5 bg-keepy-navy text-white rounded-full font-serif italic hover:bg-keepy-orange hover:text-keepy-navy transition-all duration-300 shadow-md hover:shadow-lg text-base md:text-lg inline-flex items-center gap-2"
           >
-            Request Access Code
+            Open App
           </a>
         </div>
 
@@ -71,7 +71,7 @@ export const InstallGuide: React.FC = () => {
                         <div className="space-y-1">
                              <span className="text-4xl font-serif text-keepy-lime/50 italic absolute -translate-x-10 -translate-y-2 select-none opacity-50 hidden md:block">1</span>
                              <h4 className="text-xl font-serif font-bold text-keepy-navy">Visit the site</h4>
-                             <p className="text-gray-500 font-light text-base md:text-lg">Go to <span className="font-medium text-keepy-navy">keepy-app.vercel.app</span> on your {activeTab === 'ios' ? 'Safari' : 'Chrome'} browser.</p>
+                             <p className="text-gray-500 font-light text-base md:text-lg">Go to <a href="https://keepy-app.vercel.app" target="_blank" rel="noopener noreferrer" className="font-medium text-keepy-navy hover:text-keepy-orange border-b border-keepy-navy/20 hover:border-keepy-orange transition-all">keepy-app.vercel.app</a> on your {activeTab === 'ios' ? 'Safari' : 'Chrome'} browser.</p>
                         </div>
                          <div className="w-px h-8 bg-gray-200 ml-4 hidden md:block"></div>
                         <div className="space-y-1">
